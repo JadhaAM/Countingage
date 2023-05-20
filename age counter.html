@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Age Counter</title>
+  <style>
+  body{
+    background-image: linear-gradient(red,gold,green, lightpink);
+    background-repeat:no-repeat; 
+    background: cover ;
+  }
+    
+  .container {
+  max-width: 400px;
+  height: 1000px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+ 
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="date"] {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.button:hover{
+  font-size: 20px;
+  font-style: italic;
+}
+
+#result {
+  font-size: 18px;
+  margin-top: 20px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Age Counter</h1>
+    <div>
+      <label for="birth-date">Enter your birth date:</label>
+      <input type="date" id="birth-date">
+      <button class="button" onclick="calculateAge();">Calculate</button>
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <script >
+    button=document.querySelector('.button')
+function calculateAge(){
+  var birthDate = document.getElementById("birth-date").value;
+  var today = new Date();
+  var birthDateObj = new Date(birthDate);
+  var age = today.getFullYear() - birthDateObj.getFullYear();
+
+  var month = today.getMonth() - birthDateObj.getMonth();
+  
+  if (month < 0 || (month === 0 && today.getDate() < birthDateObj.getDate())) {
+    age--;
+  }
+  
+  document.getElementById("result").textContent = "Your age is: " + age  ;
+  // document.getElementById("result").textContent = "Your age month is: " +month ;
+}
+  </script>
+</body>
+</html>
+
+
+
+
+
+
